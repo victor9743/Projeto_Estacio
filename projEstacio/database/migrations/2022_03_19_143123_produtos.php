@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('failed_jobs', function (Blueprint $table) {
-            $table->id();
-            $table->string('uuid')->unique();
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+        Schema::create('produtos', function (Blueprint $table) {
+            $table->id('id_produto');
+            $table->string('nomeproduto', 50)->unique();
+            $table->string('dtavalidade', 11);
+            $table->string('codbarras', 13)->unique();
+            $table->string('tipoproduto', 20);
+            $table->timestamps();
         });
     }
 
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('produtos');
     }
 };
