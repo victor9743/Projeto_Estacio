@@ -19,7 +19,8 @@ Route::get('/', function () {
 });
 
 // produtos
-Route::post('/produtos', [produtoController::class, 'store']);
+Route::get('/produtos/new', function (){ return view('produtos/newProduto');});
+Route::post('/produtos/save', [produtoController::class, 'store']);
 Route::get('/produtos', [produtoController::class, 'get']);
 
 //estoque
