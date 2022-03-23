@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="/produtos/save" method="POST" enctype="multipart/form-data">
+@extends('produtos.layout.main')
+@section('title', 'novo produto')
+@section('content')
+
+    <form action="/produtos" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="hidden" name="id_produto" id="id_produto" value=0>
-        <input type="text" name="produto" id="produto">
-        <input type="text" name="validade" id="validade">
-        <input type="text" name="codbarras" id="codbarras">
-        <input type="text" name="tipo" id="tipo">
+        <input type="hidden" name="id" id="id" value="<?php echo isset($produto) ? $produto->id : ''?>">
+        <input type="text" name="nomeproduto" id="nomeproduto" value="<?php echo isset($produto) ? $produto->nomeproduto : ''?>">
+        <input type="text" name="dtavalidade" id="dtavalidade" value="<?php echo isset($produto) ? $produto->dtavalidade : ''?>">
+        <input type="text" name="codbarras" id="codbarras" value="<?php echo isset($produto) ? $produto->codbarras : ''?>">
+        <input type="text" name="tipoproduto" id="tipoproduto" value="<?php echo isset($produto) ? $produto->tipoproduto : ''?>">
 
         <input type="submit" value="Salvar">
     </form>
-</body>
-</html>
+@endsection

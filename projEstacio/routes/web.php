@@ -19,9 +19,15 @@ Route::get('/', function () {
 });
 
 // produtos
-Route::get('/produtos/new', function (){ return view('produtos/newProduto');});
-Route::post('/produtos/save', [produtoController::class, 'store']);
-Route::get('/produtos', [produtoController::class, 'get']);
+Route::get('/produtos', [produtoController::class, 'index']);
+Route::get('/produtos/new', function () {
+    return view('/produtos/newProduto');
+});
+Route::post('/produtos', [produtoController::class, 'salvar']);
+Route::get('/produto/{id}', [produtoController::class, 'mostrar']);
+Route::put('/produto/{id}', [produtoController::class, 'editar']);
+Route::delete('/produto/{id}', [produtoController::class, 'remover']);
+
 
 //estoque
 

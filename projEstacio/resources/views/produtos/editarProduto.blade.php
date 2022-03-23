@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Document</title>
 </head>
 <body>
-        <a href="{{ '/produtos' }}" type="button"><button>Produtos</button></a>
-    
+    <form class="row" action="/update/{{$valor_edit->id}}" method="POST" enctype="multipart/form-data">    
+        @csrf
+        @method('PUT')
+        
+    </form>
+
 </body>
 </html>

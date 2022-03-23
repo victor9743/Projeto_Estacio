@@ -8,35 +8,37 @@ use App\Models\produtos;
 
 class produtoController extends Controller
 {
-    protected function get () {
+    protected function index () {
         $produtos = produtos::all();
 
         return view("produtos/indexProduto", ['produtos' => $produtos]);
     }
-    protected function store (Request $produtos) {
+    protected function salvar (Request $produto) {
 
-        $mConnection = new produtos;
-        $produto ='';
-        $produto = produtos::find($produtos->id_produto);
-
-        if (!empty($produto)) {
-            $update = $produto->all();
-            issue::findOrFail($produtos->idProduto)->update($update);
+        if (!empty($produto->id)) {
+            $p = $produto->all();
+            produtos::findOrFail($p['id'])->update($p);
+            
         } else {
-            $mConnection->nomeproduto = $produtos->produto;
-            $mConnection->dtavalidade = $produtos->validade;
-            $mConnection->codbarras = $produtos->codbarras;
-            $mConnection->tipoproduto = $produtos->tipo;
-        }
-        
+            $mConnection = new produtos;
 
-        $mConnection->save();
+            $mConnection->nomeproduto = $produto->nomeproduto;
+            $mConnection->dtavalidade = $produto->dtavalidade;
+            $mConnection->codbarras = $produto->codbarras;
+            $mConnection->tipoproduto = $produto->tipoproduto;
+            $mConnection->save();
+        }
         
         return redirect("/produtos")->with('msg', 'Dados Salvos');
     }
-    protected function remove($id) {
+    protected function mostrar($id) {
+        $produto = produtos::findOrFail($id);
+
+        return view('/produtos/newProduto', ['produto'=>$produto]);
+    }
+    protected function remover($id) {
         produtos::findOrFail($id)->delete();
-        return redirect("/")->with('msg', 'Dados removidos do com sucesso !!!');
+        return redirect("/produtos")->with('msg', 'Dados removidos do com sucesso !!!');
 
     }
 }
