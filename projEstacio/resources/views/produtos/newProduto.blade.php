@@ -12,4 +12,14 @@
 
         <input type="submit" value="Salvar">
     </form>
+    <div id="dialog" title="Basic dialog">
+        <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the &apos;x&apos; icon.</p>
+    </div>
 @endsection
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$( function() {
+    $("#dialog").dialog();
+  } );
+    
+</script>

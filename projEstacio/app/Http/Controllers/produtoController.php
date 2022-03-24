@@ -34,7 +34,7 @@ class produtoController extends Controller
     protected function mostrar($id) {
         $produto = produtos::findOrFail($id);
 
-        return view('/produtos/newProduto', ['produto'=>$produto]);
+        return view('/produtos/newProduto', ['produto' => $produto]);
     }
     protected function remover($id) {
         produtos::findOrFail($id)->delete();
