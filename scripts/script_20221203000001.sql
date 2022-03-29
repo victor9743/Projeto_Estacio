@@ -5,9 +5,11 @@ create table produtos (
     codbarras varchar(13) not null,
     tipoproduto varchar(20)
 );
+/*ok*/
 
 create table estoque (
-	idproduto int primary key,
+	idestoque int primary key,
+	idproduto int,
     qtdentrada int not null,
     qtdsaida int not null,
     dataentrada varchar(11) not null,
@@ -17,6 +19,7 @@ create table estoque (
     idprodutovarejo int,
     idprodutoatacadoint int 
 );
+/* ok */
 create table varejo (
 	idproduto int,
     precovarejo float(7,2) not null
@@ -33,7 +36,7 @@ create table movimentacoes (
 );
 
 create table pessoafisica (
-	pk_pessoafisica int primary key auto_increment,
+	pkpessoafisica int primary key auto_increment,
     validadorpessoafisica enum('1'),
     nome varchar(100),
     cpf varchar(14),
