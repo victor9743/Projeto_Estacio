@@ -13,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('estoque', function (Blueprint $table) {
-            $table->id('id');
+        Schema::create('atacado', function (Blueprint $table) {
+            
             $table->integer('idproduto')->unsigned();
-            $table->integer('qtdentrada');
-            $table->integer('qtdsaida');
-            $table->string('dtaentrada', 11);
-            $table->string('dtasaida', 11);
-            $table->float('valorentrada', 8, 2);
-            $table->float('valorsaida', 8, 2);
-            $table->string('tipoproduto', 20);
+            $table->float('precovarejo', 8, 2);
             $table->timestamps();
  
             $table->foreign('idproduto')->references('id')->on('produtos');

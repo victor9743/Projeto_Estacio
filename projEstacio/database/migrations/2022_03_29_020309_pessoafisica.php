@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('produtos', function (Blueprint $table) {
+        Schema::create('pessoafisica', function (Blueprint $table) {
+            
             $table->increments('id');
-            $table->string('nomeproduto', 50)->unique();
-            $table->string('dtavalidade', 11);
-            $table->string('codbarras', 13)->unique();
-            $table->string('tipoproduto', 20);
+            $table->enum('validadorpessoafisica', ['1']);
+            $table->string('nome', 100);
+            $table->string('cpf', 14)->unique();
+            $table->json('telefone');
             $table->timestamps();
+
         });
     }
 
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produtos');
+        //
     }
 };

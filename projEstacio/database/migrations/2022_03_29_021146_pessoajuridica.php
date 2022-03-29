@@ -13,13 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('produtos', function (Blueprint $table) {
+        Schema::create('pessoajuridica', function (Blueprint $table) {
+            
             $table->increments('id');
-            $table->string('nomeproduto', 50)->unique();
-            $table->string('dtavalidade', 11);
-            $table->string('codbarras', 13)->unique();
-            $table->string('tipoproduto', 20);
+            $table->enum('validadorpessoajuridica', ['2']);
+            $table->string('nome', 100);
+            $table->string('cnpj', 18)->unique();
+            $table->json('telefone');
+            $table->json('endereco');
+            $table->json('cep');
             $table->timestamps();
+
         });
     }
 
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produtos');
+        //
     }
 };
