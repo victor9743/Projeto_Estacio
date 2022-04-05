@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        $table->integer('idproduto')->unsigned();
+        $table->float('precovarejo', 8, 2);
+        $table->timestamps();
     }
 
     /**

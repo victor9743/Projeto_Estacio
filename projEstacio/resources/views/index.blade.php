@@ -8,6 +8,7 @@
 </head>
 <body>
         <a href="{{ '/produtos' }}" type="button"><button>Produtos</button></a>
+        <a href="{{ '/pf' }}" type="button"><button>Pessoas Físicas</button></a>
     
 </body>
 </html>
