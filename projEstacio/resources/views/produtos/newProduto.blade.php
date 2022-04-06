@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('produtos.layout.main')
 @section('title', 'novo produto')
 @section('content')
 
